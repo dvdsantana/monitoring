@@ -2,6 +2,7 @@ import logging
 import sqlite3
 from sqlite3 import Error
 
+
 class Store():
     
     def create_connection(self, db_file):
@@ -40,3 +41,7 @@ class Store():
         with conn:
             conn.execute("DELETE FROM monitoring")
             conn.executemany(sql_insert, values)
+    
+    def get_data(self, conn, query):
+        with conn:
+            conn.execute(query)

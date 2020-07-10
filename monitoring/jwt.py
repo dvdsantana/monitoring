@@ -1,8 +1,10 @@
-from werkzeug.security import safe_str_cmp
-from monitoring.models.User import User
-from flask_jwt import JWT
-from monitoring import app
 from os import environ
+
+from flask_jwt import JWT
+from werkzeug.security import safe_str_cmp
+
+from monitoring import app
+from monitoring.models.User import User
 
 users = [
     User(1, 'user1', 'qwerty'),
