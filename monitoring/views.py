@@ -5,7 +5,7 @@ from functools import wraps
 from flask import abort, jsonify
 from flask_jwt import jwt_required
 
-from monitoring import app
+from monitoring import app, cache
 from monitoring.customerRepository import CustomerRepository
 from monitoring.historianRepository import HistorianRepository
 
@@ -55,15 +55,11 @@ def validate_date(f):
         return f(*args, **kwargs)
     return wrap
 
-@app.route('/', methods=['GET'])
-@jwt_required()
-def hello_world():
-    return 'Hello, World!'
-
 @app.route('/customers/<customer>/active_power/<date_from>/<date_to>', methods=['GET'])
 @jwt_required()
 @customer_exists
 @validate_date
+@cache.cached(timeout=10, query_string=True)
 def active_power(customer, date_from, date_to):
     data = repository.get_active_power(date_from, date_to)
 
@@ -73,6 +69,7 @@ def active_power(customer, date_from, date_to):
 @jwt_required()
 @customer_exists
 @validate_date
+@cache.cached(timeout=10, query_string=True)
 def energy_consumption(customer, date_from, date_to):
     data = repository.get_energy_consumption(date_from, date_to)
 
@@ -81,5 +78,6 @@ def energy_consumption(customer, date_from, date_to):
 @app.route('/customers/<customer>/current_month_status', methods=['GET'])
 @jwt_required()
 @customer_exists
+@cache.cached(timeout=10, query_string=True)
 def current_month_status():
     return 'current_month_status'
