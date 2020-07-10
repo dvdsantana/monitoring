@@ -1,5 +1,5 @@
 from werkzeug.security import safe_str_cmp
-from models.User import User
+from monitoring.models.User import User
 from flask_jwt import JWT
 from monitoring import app
 from os import environ
