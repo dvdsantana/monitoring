@@ -80,4 +80,10 @@ def energy_consumption(customer, date_from, date_to):
 @customer_exists
 @cache.cached(timeout=10, query_string=True)
 def current_month_status():
-    return 'current_month_status'
+    """
+    TODO:
+    1- Obtener el mes y año actual
+    2- Obtener de forma agregada los datos que se piden: sum(energy), sum(reactive_energy)
+    3- Devolver esos datos en un objeto
+    """
+    return 'not implemented yet'

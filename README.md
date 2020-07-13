@@ -30,6 +30,10 @@ Para la aplicación flask se incluye en el proyecto la configuración de lanzami
 
 `curl --location --request GET 'http://localhost:5000/customers/CMA-095-A/current_month_status' --header 'Authorization: JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTQ0MDI0ODMsImlhdCI6MTU5NDQwMjE4MywibmJmIjoxNTk0NDAyMTgzLCJpZGVudGl0eSI6MX0.HUGH0MgdyQIdsx4AKYULiIjGxqFDLVEDYDliFgxuLwA'`
 
+5. Existen 3 endpoints que responden a las 3 zonas marcadas en la siguiente imagen:
+
+![Dashboard with endpoints](dashboard.jpg)
+
 # Decisiones técnicas
 
 ## General
